@@ -1,0 +1,190 @@
+context bikesSourceData {
+	type SDate		:		LocalDate;
+	type dt			:		LocalDate;
+	type str_one	:		String(1);
+	type str_two	:		String(2);
+	type str_tri	:		String(3);
+	type str_bes	:		String(5);
+	type str_sht	:		String(10);
+	type str_med	:		String(20);
+	type str_lng	:		String(30);
+	type str_xlng	:		String(40);
+	type str_xxlng	:		String(60);
+	type desc		:		String(255);
+	type coord		:		Decimal(10,6);
+	type meas		:		Decimal(13,3);
+	type price		:		Decimal(15,2);
+
+	@Comment :	'Addresses Table'  
+	entity ADDRESSES {
+	    key ADDRESS_ID				:		str_sht;
+	        CITY					:		str_xlng;
+	        POSTAL_CODE				:		str_sht;
+	        STREET					:		str_xxlng;
+	        BUILDING				:		str_sht;
+	        COUNTRY 				:		str_tri;
+	        REGION					:		String(4);
+	        ADDRESS_TYPE 			:		String(12);
+	        VALIDITY_STARTDATE		:		dt;
+	        VALIDITY_ENDDATE		:		dt;
+	        LATITUDE				:		coord;
+	        LONGITUDE				:		coord;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+	
+	@Comment : 'BusinessPartners Table'
+	entity BUSINESS_PARTNERS {
+		key PARTNER_ID				:		str_sht;
+		    PARTNER_ROLE 			:		str_tri;
+	    	EMAIL_ADDRESS			:		desc;
+	    	PHONE_NUMBER 			:		str_lng;
+		    FAX_NUMBER				:		str_lng;
+	    	WEB_ADDRESS				:		String(1024);
+		    ADDRESS_ID				:		str_sht;
+	    	COMPANY_NAME 			:		String(80);
+		    LEGAL_FORM				:		str_sht;
+	    	CREATED_BY				:		str_sht;
+		    CREATED_AT				:		dt;
+	    	CHANGED_BY				:		str_sht;
+		    CHANGED_AT				:		dt;
+	    	CURRENCY				:		str_bes;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+	
+	@Comment : 'Employees Table'
+	entity EMPLOYEES {
+		key EMPLOYEE_ID				:		str_sht;
+			NAME_FIRST				:		str_xlng;
+			NAME_MIDDLE 			:		str_xlng;
+			NAME_LAST				:		str_xlng;
+			NAME_INITIALS			:		str_sht;
+			SEX 					:		str_one;
+			LANGUAGE				:		str_two;
+			PHONE_NUMBER				:		str_lng;
+			EMAIL_ADDRESS			:		desc;
+			LOGIN_NAME				:		String(12);
+			ADDRESS_ID				:		str_sht;
+			VALIDITY_STARTDATE		:		dt;
+			VALIDITY_ENDDATE		:		dt;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+	
+	@Comment : 'Product Categories Table'
+	entity PRODUCT_CATEGORIES {
+		key PROD_CATEGORY_ID			:		str_two;
+			CREATED_BY				:		str_sht;
+			CREATED_AT				:		dt;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+	
+	@Comment : 'Product Category Text'
+	entity PRODUCT_CATEGORY_TEXT {
+		key PROD_CATEGORY_ID			:		str_two;
+			LANGUAGE				:		str_two;
+			SHORT_DESCR				:		str_med;
+			MEDIUM_DESCR			:		str_xlng;
+			LONG_DESCR				:		str_sht;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+	
+	@Comment : 'Products'
+	entity PRODUCTS {
+		key PRODUCT_ID				:		str_sht;
+			TYPE_CODE				:		str_two;
+			PROD_CATEGORY_ID			:		str_two;
+			CREATED_BY				:		str_sht;
+			CREATED_AT				:		dt;
+			CHANGED_BY				:		str_sht;
+			CHANGED_AT				:		dt;
+			SUPPLIER_PARTNER_ID		:		str_sht;
+			TAX_TARIFF_CODE			:		str_one;
+			QUANTITY_UNIT			:		str_tri;
+			WEIGHT_MEASURE			:		meas;
+			WEIGHT_UNIT				:		str_tri;
+			CURRENCY				:		str_bes;
+			PRICE					:		price;
+			WIDTH					:		meas;
+			DEPTH					:		meas;
+			HEIGHT					:		meas;
+			DIMENSION_UNIT			:		str_tri;
+			PRODUCT_PIC_URL			:		desc;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+	
+	@Comment : 'Product Texts Table'
+	entity PRODUCT_TEXTS {
+		key PRODUCT_ID				:		str_sht;
+		key	LANGUAGE				:		str_two;
+			SHORT_DESCR 			:		str_med;
+			MEDIUM_DESCR			:		str_xlng;
+			LONG_DESCR				:		str_sht;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+	
+	@Comment : 'Sales Order Items Table'
+	entity SALES_ORDER_ITEMS {
+		key SALES_ORDER_ID			:		str_sht;
+		key SALES_ORDER_ITEM			:		str_sht;
+			PRODUCT_ID				:		str_sht;
+			NOTE_ID					:		str_sht;
+			CURRENCY				:		str_bes;
+			GROSS_AMOUNT 			:		price;
+			NET_AMOUNT				:		price;
+			TAX_AMOUNT				:		price;
+			ITEM_ATP_STATUS			:		str_one;
+			OPITEMPOS				:		str_sht;
+			QUANTITY				:		meas;
+			QUANTITY_UNIT			:		str_tri;
+			DELIVERY_DATE			:		dt;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+	
+	@Comment : 'Sales Orders Table'
+	entity SALES_ORDERS {
+		key SALES_ORDER_ID			:		str_sht;
+			CREATED_BY				:		str_sht;
+			CREATED_AT				:		dt;
+			CHANGED_BY				:		str_sht;
+			CHANGED_AT				:		dt;
+			FISC_VARIANT 			:		str_two;
+			FISCAL_YEAR_PERIOD		:		String(7);
+			NOTE_ID					:		str_sht;
+			PARTNER_ID				:		str_sht;
+			SALES_ORG				:		String(4);
+			CURRENCY				:		str_bes;
+			GROSS_AMOUNT 			:		price;
+			NET_AMOUNT				:		price;
+			TAX_AMOUNT				:		price;
+			LIFE_CYCLE_STATUS 		:		str_one;
+			BILLING_STATUS			:		str_one;
+			DELIVERY_STATUS			:		str_one;
+	}
+	technical configuration {
+		column store;
+		}
+	;
+}

@@ -1,0 +1,222 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "bikesSourceData.ADDRESSES",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "Addresses.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    	"ADDRESS_ID"
+                    	,"CITY"
+                    	,"POSTAL_CODE"
+                    	,"STREET"
+                    	,"BUILDING"
+                    	,"COUNTRY"
+                    	,"REGION"
+                    	,"ADDRESS_TYPE"
+                    	,"VALIDITY_STARTDATE"
+                    	,"VALIDITY_ENDDATE"
+                    	,"LATITUDE"
+                    	,"LONGITUDE"
+                ]
+            }
+        }
+         ,
+         {
+            "target_table": "bikesSourceData.BUSINESS_PARTNERS",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "BusinessPartners.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    		"PARTNER_ID",
+                    		"PARTNER_ROLE",
+                    		"EMAIL_ADDRESS",
+                    		"PHONE_NUMBER",
+                    		"FAX_NUMBER",
+                    		"WEB_ADDRESS",
+                    		"ADDRESS_ID",
+                    		"COMPANY_NAME",
+                    		"LEGAL_FORM",
+                    		"CREATED_BY",
+                    		"CREATED_AT",
+                    		"CHANGED_BY",
+                    		"CHANGED_AT",
+                    		"CURRENCY"
+                ]
+            }
+        }
+        ,
+        {
+            "target_table": "bikesSourceData.EMPLOYEES",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "Employees.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    	"EMPLOYEE_ID",
+                    	"NAME_FIRST",
+                    	"NAME_MIDDLE",
+                    	"NAME_LAST",
+                    	"NAME_INITIALS",
+                    	"SEX",
+                    	"LANGUAGE",
+                    	"PHONE_NUMBER",
+                    	"EMAIL_ADDRESS",
+                    	"LOGIN_NAME",
+                    	"ADDRESS_ID",
+                    	"VALIDITY_STARTDATE",
+                    	"VALIDITY_ENDDATE"
+                ]
+            }
+        }
+        ,
+        {
+            "target_table": "bikesSourceData.PRODUCT_CATEGORIES",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "ProductCategories.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    	"PROD_CATEGORY_ID"
+                    	,"CREATED_BY"
+                    	,"CREATED_AT"
+                ]
+            }
+        }
+        ,
+        {
+            "target_table": "bikesSourceData.PRODUCT_CATEGORY_TEXT",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "ProductCategoryText.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    	"PROD_CATEGORY_ID"
+                    	,"LANGUAGE"
+                    	,"SHORT_DESCR"
+                    	,"MEDIUM_DESCR"
+                    	,"LONG_DESCR"
+                ]
+            }
+        }
+        ,
+        {
+            "target_table": "bikesSourceData.PRODUCTS",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "Products.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    	"PRODUCT_ID"
+                    	,"TYPE_CODE"
+                    	,"PROD_CATEGORY_ID"
+                    	,"CREATED_BY"
+                    	,"CREATED_AT"
+                    	,"CHANGED_BY"
+                    	,"CHANGED_AT"
+                    	,"SUPPLIER_PARTNER_ID"
+                    	,"TAX_TARIFF_CODE"
+                    	,"QUANTITY_UNIT"
+                    	,"WEIGHT_MEASURE"
+                    	,"WEIGHT_UNIT"
+                    	,"CURRENCY"
+                    	,"PRICE"
+                    	,"WIDTH"
+                    	,"DEPTH"
+                    	,"HEIGHT"
+                    	,"PRODUCT_PIC_URL"
+                ]
+            }
+        }
+        ,
+        {
+            "target_table": "bikesSourceData.PRODUCT_TEXTS",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "ProductTexts.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    	"PRODUCT_ID"
+                    	,"LANGUAGE"
+                    	,"SHORT_DESCR"
+                    	,"MEDIUM_DESCR"
+                    	,"LONG_DESCR"
+                ]
+            }
+        }
+        ,
+        {
+            "target_table": "bikesSourceData.SALES_ORDER_ITEMS",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "SalesOrderItems.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    	"SALES_ORDER_ID"
+                    	,"SALES_ORDER_ITEM"
+                    	,"PRODUCT_ID"
+                    	,"NOTE_ID"
+                    	,"CURRENCY"
+                    	,"GROSS_AMOUNT"
+                    	,"NET_AMOUNT"
+                    	,"TAX_AMOUNT"
+                    	,"ITEM_ATP_STATUS"
+                    	,"OPITEMPOS"
+                    	,"QUANTITY"
+                    	,"QUANTITY_UNIT"
+                    	,"DELIVERY_DATE"
+                ]
+            }
+        }
+        ,
+        {
+            "target_table": "bikesSourceData.SALES_ORDERS",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "SalesOrders.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    	"SALES_ORDER_ID"
+                    	,"CREATED_BY"
+                    	,"CREATED_AT"
+                    	,"CHANGED_BY"
+                    	,"CHANGED_AT"
+                    	,"FISC_VARIANT"
+                    	,"FISCAL_YEAR_PERIOD"
+                    	,"NOTE_ID"
+                    	,"PARTNER_ID"
+                    	,"SALES_ORG"
+                    	,"CURRENCY"
+                    	,"GROSS_AMOUNT"
+                    	,"NET_AMOUNT"
+                    	,"TAX_AMOUNT"
+                    	,"LIFE_CYCLE_STATUS"
+                    	,"BILLING_STATUS"
+                    	,"DELIVERY_STATUS"
+                ]
+            }
+        }
+        
+    ]
+}
